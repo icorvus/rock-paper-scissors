@@ -46,3 +46,15 @@ function getRoundOutcome(playerSelection, computerSelection) {
   }
 }
 
+function playRound () {
+  let playerAttempt = prompt('Rock, paper or scissors. What are you choosing? ');
+  return getRoundOutcome(playerAttempt, computerPlay());
+}
+
+function game() {
+  for (let i = 0; i <= 4; i++) {
+    console.log(playRound());
+  }
+}
+
+game();
