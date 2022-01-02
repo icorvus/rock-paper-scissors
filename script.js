@@ -16,28 +16,28 @@ function getRoundOutcome(playerSelection, computerSelection) {
   computerSelection = computerSelection.toLowerCase();
 
   if (playerSelection === computerSelection) {
-    return `It's a tie! You both chose ${playerSelection}`;
+    return ["tie", playerSelection, computerSelection];
   } else if (playerSelection === "rock") {
     if (computerSelection === "paper"){
-      return `You lose! ${computerSelection} beats ${playerSelection}`;
+      return ["computer", computerSelection, playerSelection];
     } else if (computerSelection === "scissors") {
-      return `You win! ${playerSelection} beats ${computerSelection}`;
+      return ["player", playerSelection, computerSelection];
     } else {
       throw "Unknown error";
     }
   } else if (playerSelection === "paper") {
     if (computerSelection === "scissors") {
-      return `You lose! ${computerSelection} beats ${playerSelection}`;
+      return ["computer", computerSelection, playerSelection];
     } else if (computerSelection === "rock") {
-      return `You win! ${playerSelection} beats ${computerSelection}`;
+      return ["player", playerSelection, computerSelection];;
     } else {
       throw "Unknown error";
     }
   } else if (playerSelection === "scissors") {
     if (computerSelection === "rock") {
-      return `You lose! ${computerSelection} beats ${playerSelection}`;
+      return ["computer", computerSelection, playerSelection];
     } else if (computerSelection === "paper") {
-      return `You win! ${playerSelection} beats ${computerSelection}`;
+      return ["player", playerSelection, computerSelection];;
     } else {
       throw "Unknown error";
     }
@@ -51,10 +51,26 @@ function playRound () {
   return getRoundOutcome(playerAttempt, computerPlay());
 }
 
+
+function capitalize (word) {
+  word = word.toString();
+  return word[0].toUpperCase() + word.slice(1);
+}
+
 function game() {
+  let playerScore = 0;
+  let computerScore = 0;
+  let roundOutcomes;
+  let roundWinner;
   for (let i = 0; i <= 4; i++) {
-    console.log(playRound());
+    roundOutcomes = playRound();
+    if (roundOutcomes[0] === "player") {
+      playerScore++;
+      console.log("You win!")
+    }
   }
 }
+
+
 
 game();
