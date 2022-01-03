@@ -66,8 +66,31 @@ function game() {
     roundOutcomes = playRound();
     if (roundOutcomes[0] === "player") {
       playerScore++;
-      console.log("You win!")
+      console.log(`You win! ${capitalize(roundOutcomes[1])} beats ${capitalize(roundOutcomes[2])}`);
+      console.log(`The score is now:\n${playerScore} for You\n${computerScore} for Computer`);
+    } else if (roundOutcomes[0] === "computer") {
+      computerScore++;
+      console.log(`You lose! ${capitalize(roundOutcomes[1])} beats ${capitalize(roundOutcomes[2])}`);
+      console.log(`The score is now:\n${playerScore} for You\n${computerScore} for Computer`);
+    } else if (roundOutcomes[0] === "tie") {
+      playerScore++;
+      computerScore++;
+      console.log(`It's a tie! You both chose ${capitalize(roundOutcomes[1])}`);
+      console.log(`The score is now:\n${playerScore} for You\n${computerScore} for Computer`);
+    } else {
+      alert("Unknown error occured!");
+      throw "Unknown error";
     }
+  }
+
+  if (playerScore > computerScore){
+    console.log("Congrats you won the match!");
+  } else if (playerScore === computerScore) {
+    console.log("This time it's a draw! Maybe next time?");
+  } else if (playerScore < computerScore) {
+    console.log("Too bad! You lost man...");
+  } else {
+    throw "Unknown error";
   }
 }
 
