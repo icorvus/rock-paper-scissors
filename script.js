@@ -58,6 +58,8 @@ function getRoundOutcome(playerSelection, computerSelection) {
 }
 
 function playRound () {
+  // Takes input from player, checks if it's legal (to prevent bugs), asks till valid move is passed
+  // then calls other function that calculates the round outcome and returns it
   let playerAttempt = prompt('Rock, paper or scissors. What are you choosing? ').toString().toLowerCase();
   while (isLegalMove(playerAttempt) === false) {
     console.log("That's not a valid move");
@@ -69,11 +71,14 @@ function playRound () {
 
 
 function capitalize (word) {
+  // Capitalizes first letter of a string
   word = word.toString();
   return word[0].toUpperCase() + word.slice(1);
 }
 
 function game() {
+  // Main game loop, keeps track of scores, chooses final winner
+
   let playerScore = 0;
   let computerScore = 0;
   let roundOutcomes;
