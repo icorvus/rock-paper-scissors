@@ -8,6 +8,12 @@ function computerPlay() {
   return possibleResults[Math.floor(Math.random() * possibleResults.length)];
 }
 
+function isLegalMove(move){
+  const legalMoves = ['rock', 'paper', 'scissors'];
+  if (legalMoves.includes(move)) return true;
+  else return false;
+}
+
 function getRoundOutcome(playerSelection, computerSelection) {
   // Selects the winner in a single round of the game
 
@@ -45,13 +51,18 @@ function getRoundOutcome(playerSelection, computerSelection) {
       throw "Unknown error";
     }
   } else {
-    alert("Unknown error occured!");
+    alert("Unknown error occured!" + playerSelection);
     throw "Unknown error";
   }
 }
 
 function playRound () {
-  let playerAttempt = prompt('Rock, paper or scissors. What are you choosing? ');
+  let playerAttempt = prompt('Rock, paper or scissors. What are you choosing? ').toString().toLowerCase();
+  if (isLegalMove(playerAttempt) === false) {
+    console.log("That's not a valid move");
+    playRound();
+  }
+  console.log(playerAttempt);
   return getRoundOutcome(playerAttempt, computerPlay());
 }
 
