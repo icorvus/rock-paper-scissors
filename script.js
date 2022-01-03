@@ -9,6 +9,7 @@ function computerPlay() {
 }
 
 function isLegalMove(move){
+  // Checks if move is legal, case sensitive, so have to be passed lowercase moves
   const legalMoves = ['rock', 'paper', 'scissors'];
   if (legalMoves.includes(move)) return true;
   else return false;
@@ -51,7 +52,7 @@ function getRoundOutcome(playerSelection, computerSelection) {
       throw "Unknown error";
     }
   } else {
-    alert("Unknown error occured!" + playerSelection);
+    alert("Unknown error occured!");
     throw "Unknown error";
   }
 }
