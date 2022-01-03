@@ -23,6 +23,7 @@ function getRoundOutcome(playerSelection, computerSelection) {
     } else if (computerSelection === "scissors") {
       return ["player", playerSelection, computerSelection];
     } else {
+      alert("Unknown error occured!");
       throw "Unknown error";
     }
   } else if (playerSelection === "paper") {
@@ -31,6 +32,7 @@ function getRoundOutcome(playerSelection, computerSelection) {
     } else if (computerSelection === "rock") {
       return ["player", playerSelection, computerSelection];;
     } else {
+      alert("Unknown error occured!");
       throw "Unknown error";
     }
   } else if (playerSelection === "scissors") {
@@ -39,9 +41,11 @@ function getRoundOutcome(playerSelection, computerSelection) {
     } else if (computerSelection === "paper") {
       return ["player", playerSelection, computerSelection];;
     } else {
+      alert("Unknown error occured!");
       throw "Unknown error";
     }
   } else {
+    alert("Unknown error occured!");
     throw "Unknown error";
   }
 }
@@ -90,6 +94,7 @@ function game() {
   } else if (playerScore < computerScore) {
     console.log("Too bad! You lost man...");
   } else {
+    alert("Unknown error occured!");
     throw "Unknown error";
   }
 }
