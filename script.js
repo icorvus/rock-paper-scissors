@@ -58,9 +58,9 @@ function getRoundOutcome(playerSelection, computerSelection) {
 
 function playRound () {
   let playerAttempt = prompt('Rock, paper or scissors. What are you choosing? ').toString().toLowerCase();
-  if (isLegalMove(playerAttempt) === false) {
+  while (isLegalMove(playerAttempt) === false) {
     console.log("That's not a valid move");
-    playRound();
+    playerAttempt = prompt('Rock, paper or scissors. What are you choosing? ').toString().toLowerCase();
   }
   console.log(playerAttempt);
   return getRoundOutcome(playerAttempt, computerPlay());
