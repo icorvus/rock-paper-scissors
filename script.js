@@ -79,10 +79,12 @@ function capitalize (word) {
 function game() {
   // Main game loop, keeps track of scores, chooses final winner
 
+  
   let playerScore = 0;
   let computerScore = 0;
   let roundOutcomes;
   let roundWinner;
+  /*
   for (let i = 0; i <= 4; i++) {
     roundOutcomes = playRound();
     if (roundOutcomes[0] === "player") {
@@ -103,6 +105,7 @@ function game() {
       throw "Unknown error";
     }
   }
+*/
 
   if (playerScore > computerScore){
     console.log("Congrats you won the match!");
