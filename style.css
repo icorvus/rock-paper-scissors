@@ -1,4 +1,56 @@
 * {
   margin: 0px;
   padding: 0px;
+ /* border: 1px solid red; */
+}
+
+#container {
+  height: 100vf;
+}
+
+#container,
+#game,
+#game-main,
+.weapon {
+  display: flex;
+  flex-direction: column;
+}
+
+#title,
+#game {
+  text-align: center;
+}
+
+#weapon-selector {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn {
+  padding: 10px;
+}
+
+#title {
+  padding: 75px 0;
+  background-color: #E6E6EA;
+}
+
+#text-box {
+  height: 350px;
+  background-color: #FED766;
+  font-size: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-content {
+  margin: 0 10%;
+}
+
+#game-main {
+  height: 400px;
+  padding: 30px;
+  background-color: #E6E6EA;
 }
