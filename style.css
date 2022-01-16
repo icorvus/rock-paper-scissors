@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+
 * {
   margin: 0px;
   padding: 0px;
  /* border: 1px solid red; */
+  font-family: 'Lato', sans-serif;
 }
 
 .container {
@@ -24,11 +28,15 @@
 .weapon-selector {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 100px;
+  flex-wrap: wrap;
 }
 
 .btn {
   padding: 10px;
+  cursor: pointer;
+  min-height: 225px;
+  min-width: 225px;
 }
 
 .title {
@@ -54,3 +62,4 @@
   padding: 30px;
   background-color: #E6E6EA;
 }
+
