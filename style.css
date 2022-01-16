@@ -37,6 +37,9 @@
   cursor: pointer;
   min-height: 225px;
   min-width: 225px;
+  border: none;
+  border-radius: 20px;
+  background-color: #FED766;
 }
 
 .title {
