@@ -8,13 +8,6 @@ function computerPlay() {
   return possibleResults[Math.floor(Math.random() * possibleResults.length)];
 }
 
-function isLegalMove(move){
-  // Checks if move is legal, case sensitive, so have to be passed lowercase moves
-  const legalMoves = ['rock', 'paper', 'scissors'];
-  if (legalMoves.includes(move)) return true;
-  else return false;
-}
-
 function getRoundOutcome(playerSelection, computerSelection) {
   // Selects the winner in a single round of the game
 
@@ -56,19 +49,6 @@ function getRoundOutcome(playerSelection, computerSelection) {
     throw "Unknown error";
   }
 }
-
-function playRound () {
-  // Takes input from player, checks if it's legal (to prevent bugs), asks till valid move is passed
-  // then calls other function that calculates the round outcome and returns it
-  let playerAttempt = prompt('Rock, paper or scissors. What are you choosing? ').toString().toLowerCase();
-  while (isLegalMove(playerAttempt) === false) {
-    console.log("That's not a valid move");
-    playerAttempt = prompt('Rock, paper or scissors. What are you choosing? ').toString().toLowerCase();
-  }
-  console.log(playerAttempt);
-  return getRoundOutcome(playerAttempt, computerPlay());
-}
-
 
 function capitalize (word) {
   // Capitalizes first letter of a string
