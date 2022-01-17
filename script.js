@@ -68,9 +68,11 @@ function game() {
   const btnScissors = document.querySelector(".scissors");
 
   const textBox = document.querySelector(".text-box");
+  const textBoxContent = document.querySelector(".text-content");
   const scoreText = document.createElement("p");
   const scoreContent = document.createElement("p");
-  scoreText.textContent = "Current score is:"
+  textBox.appendChild(scoreText);
+  textBox.appendChild(scoreContent);
 
   btnRock.addEventListener('click', () => playRound('rock'));
 
@@ -80,74 +82,50 @@ function game() {
 
   function playRound(weapon) {
     if (playerScore < 5 && computerScore < 5){
+      scoreText.textContent = "Current score is:"
       roundOutcomes = getRoundOutcome(weapon);
       if (roundOutcomes[0] === "player") playerScore++;
       else if (roundOutcomes[0] === "computer") computerScore++;
       console.log(playerScore, computerScore);
       showRoundWinner(...roundOutcomes);
-      scoreContent.textContent = `Player ${playerScore}:${computerScore} Computer`;
-      textBox.appendChild(scoreText);
-      textBox.appendChild(scoreContent);
-     // if (playerScore === 5) showGameWinner('player');
-     // else if (computerScore === 5) showGameWinner('computer');
+      scoreContent.innerHTML = `&nbsp;&nbsp;` + `Player ${playerScore}:${computerScore} Computer`;
+      if (playerScore === 5) showGameWinner('player');
+      else if (computerScore === 5) showGameWinner('computer');
     }
   }
 
-  /*
-  for (let i = 0; i <= 4; i++) {
-    roundOutcomes = playRound();
-    if (roundOutcomes[0] === "player") {
-      playerScore++;
-      console.log(`You win! ${capitalize(roundOutcomes[1])} beats ${capitalize(roundOutcomes[2])}`);
-      console.log(`The score is now:\n${playerScore} for You\n${computerScore} for Computer`);
-    } else if (roundOutcomes[0] === "computer") {
-      computerScore++;
-      console.log(`You lose! ${capitalize(roundOutcomes[1])} beats ${capitalize(roundOutcomes[2])}`);
-      console.log(`The score is now:\n${playerScore} for You\n${computerScore} for Computer`);
-    } else if (roundOutcomes[0] === "tie") {
-      playerScore++;
-      computerScore++;
-      console.log(`It's a tie! You both chose ${capitalize(roundOutcomes[1])}`);
-      console.log(`The score is now:\n${playerScore} for You\n${computerScore} for Computer`);
+  function showGameWinner(winner) {
+    scoreText.textContent = "Final score is:";
+    const rematchButton = document.createElement('button');
+    if (winner === 'player') {
+      textBox.style.backgroundColor = "#0CCE6B";
+      textBoxContent.textContent = "Congrats you won the match!";
+      rematchButton.textContent = "Wanna beat me again?";
+    } else {
+      textBox.style.backgroundColor = "#FE4A49"
+      textBoxContent.textContent = "Too bad! You lost man..";
+      rematchButton.textContent = "Wanna get defeated again?";
+    }
+    rematchButton.setAttribute('style', `background-color: #283044; color: #5386E4; padding: 20px 32px;
+     border: none; border-radius: 20px; cursor: pointer; font-size: 24px`);
+    rematchButton.addEventListener('click', () => window.location.reload());
+    textBox.appendChild(rematchButton);
+  }
+
+  function showRoundWinner(winner, winningWeapon, losingWeapon){
+    console.log(winner);
+    if (winner === "player") {
+      textBoxContent.textContent = `You win! ${capitalize(winningWeapon)} beats ${capitalize(losingWeapon)}`;
+    } else if (winner === "computer") {
+      textBoxContent.textContent = `You lose! ${capitalize(winningWeapon)} beats ${capitalize(losingWeapon)}`;
+    } else if (winner === "tie") {
+      textBoxContent.textContent = `It's a tie! You both chose ${capitalize(winningWeapon)}`;
     } else {
       alert("Unknown error occured!");
       throw "Unknown error";
     }
   }
-*/
-
-/*  if (playerScore > computerScore){
-    console.log("Congrats you won the match!");
-  } else if (playerScore === computerScore) {
-    console.log("This time it's a draw! Maybe next time?");
-  } else if (playerScore < computerScore) {
-    console.log("Too bad! You lost man...");
-  } else {
-    alert("Unknown error occured!");
-    throw "Unknown error";
-  }
-*/
 }
-
-
-function showRoundWinner(winner, winningWeapon, losingWeapon){
-  const textBox = document.querySelector(".text-box");
-  console.log(winner);
-  if (winner === "player") {
-    //console.log(`You win! ${capitalize(winningWeapon)} beats ${capitalize(losingWeapon)}`);
-    textBox.textContent = `You win! ${capitalize(winningWeapon)} beats ${capitalize(losingWeapon)}`;
-  } else if (winner === "computer") {
-    //console.log(`You lose! ${capitalize(winningWeapon)} beats ${capitalize(losingWeapon)}`);
-    textBox.textContent = `You lose! ${capitalize(winningWeapon)} beats ${capitalize(losingWeapon)}`;
-  } else if (winner === "tie") {
-    //console.log(`It's a tie! You both chose ${capitalize(winningWeapon)}`);
-    textBox.textContent = `It's a tie! You both chose ${capitalize(winningWeapon)}`;
-  } else {
-    alert("Unknown error occured!");
-    throw "Unknown error";
-  }
-}
-
 
 
 game();
