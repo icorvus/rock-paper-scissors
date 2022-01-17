@@ -48,7 +48,7 @@ function getRoundOutcome(playerSelection) {
   }
 }
 
-function capitalize (word) {
+function capitalize(word) {
   // Capitalizes first letter of a string
   word = word.toString();
   return word[0].toUpperCase() + word.slice(1);
@@ -67,21 +67,31 @@ function game() {
   const btnPaper = document.querySelector(".paper");
   const btnScissors = document.querySelector(".scissors");
 
-  btnRock.addEventListener('click', () => {
-    roundOutcomes = getRoundOutcome('rock');
-    showWinner(roundOutcomes[0], roundOutcomes[1], roundOutcomes[2]);
-  });
+  const textBox = document.querySelector(".text-box");
+  const scoreText = document.createElement("p");
+  const scoreContent = document.createElement("p");
+  scoreText.textContent = "Current score is:"
 
-  btnPaper.addEventListener('click', () => {
-    roundOutcomes = getRoundOutcome('paper');
-    showWinner(roundOutcomes[0], roundOutcomes[1], roundOutcomes[2]);
-  });
+  btnRock.addEventListener('click', () => playRound('rock'));
 
-  btnScissors.addEventListener('click', () => {
-    roundOutcomes = getRoundOutcome('scissors');
-    showWinner(roundOutcomes[0], roundOutcomes[1], roundOutcomes[2]);
-  });
+  btnPaper.addEventListener('click', () => playRound('paper'));
 
+  btnScissors.addEventListener('click', () => playRound('scissors'));
+
+  function playRound(weapon) {
+    if (playerScore < 5 && computerScore < 5){
+      roundOutcomes = getRoundOutcome(weapon);
+      if (roundOutcomes[0] === "player") playerScore++;
+      else if (roundOutcomes[0] === "computer") computerScore++;
+      console.log(playerScore, computerScore);
+      showRoundWinner(...roundOutcomes);
+      scoreContent.textContent = `Player ${playerScore}:${computerScore} Computer`;
+      textBox.appendChild(scoreText);
+      textBox.appendChild(scoreContent);
+     // if (playerScore === 5) showGameWinner('player');
+     // else if (computerScore === 5) showGameWinner('computer');
+    }
+  }
 
   /*
   for (let i = 0; i <= 4; i++) {
@@ -120,9 +130,7 @@ function game() {
 }
 
 
-
-
-function showWinner(winner, winningWeapon, losingWeapon){
+function showRoundWinner(winner, winningWeapon, losingWeapon){
   const textBox = document.querySelector(".text-box");
   console.log(winner);
   if (winner === "player") {

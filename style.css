@@ -59,6 +59,8 @@
   background-color: #FED766;
   font-size: 36px;
   display: flex;
+  flex-direction: column;
+  gap: 20px;
   justify-content: center;
   align-items: center;
 }
