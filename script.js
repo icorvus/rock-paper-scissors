@@ -1,19 +1,17 @@
 function computerPlay() {
   // Returns pseudorandomly 'Rock' or 'Paper' or 'Scissors'
 
-  const possibleResults = ['Rock', 'Paper', 'Scissors'];
+  const possibleResults = ['rock', 'paper', 'scissors'];
 
   // This math expression below takes values from 0 to 2
   // and uses it to choose the final result
   return possibleResults[Math.floor(Math.random() * possibleResults.length)];
 }
 
-function getRoundOutcome(playerSelection, computerSelection) {
+function getRoundOutcome(playerSelection) {
   // Selects the winner in a single round of the game
-
-  // Makes function inputs case-insensitive to prevent bugs
-  playerSelection = playerSelection.toLowerCase();
-  computerSelection = computerSelection.toLowerCase();
+  
+  const computerSelection = computerPlay();
 
   if (playerSelection === computerSelection) {
     return ["tie", playerSelection, computerSelection];
@@ -70,17 +68,17 @@ function game() {
   const btnScissors = document.querySelector(".scissors");
 
   btnRock.addEventListener('click', () => {
-    roundOutcomes = getRoundOutcome('rock', computerPlay());
+    roundOutcomes = getRoundOutcome('rock');
     showWinner(roundOutcomes[0], roundOutcomes[1], roundOutcomes[2]);
   });
 
   btnPaper.addEventListener('click', () => {
-    roundOutcomes = getRoundOutcome('paper', computerPlay());
+    roundOutcomes = getRoundOutcome('paper');
     showWinner(roundOutcomes[0], roundOutcomes[1], roundOutcomes[2]);
   });
 
   btnScissors.addEventListener('click', () => {
-    roundOutcomes = getRoundOutcome('scissors', computerPlay());
+    roundOutcomes = getRoundOutcome('scissors');
     showWinner(roundOutcomes[0], roundOutcomes[1], roundOutcomes[2]);
   });
 
