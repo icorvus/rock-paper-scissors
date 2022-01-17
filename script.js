@@ -61,7 +61,6 @@ function game() {
   let playerScore = 0;
   let computerScore = 0;
   let roundOutcomes;
-  let roundWinner;
 
   const btnRock = document.querySelector(".rock");
   const btnPaper = document.querySelector(".paper");
