@@ -6,16 +6,11 @@
   padding: 0px;
  /* border: 1px solid red; */
   font-family: 'Lato', sans-serif;
- /* color: #121619 */
-}
-
-body {
-  background-color: #C9B6BE;
-  height: 100vh;
 }
 
 .container {
-  height: 100vf;
+  height: 100vh;
+  color: #121619;
 }
 
 .container,
@@ -86,4 +81,22 @@ body {
 
 .weapon {
   font-size: 24px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: #5386E4;
+  color: #121619;
+  font-size: 20px;
+}
+
+.footer a{
+  text-decoration: none;
+  color: #121619;
+}
+
+.footer a:hover {
+  color: #FED766;
 }
