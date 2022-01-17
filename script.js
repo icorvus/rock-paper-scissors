@@ -84,6 +84,27 @@ function game() {
   let computerScore = 0;
   let roundOutcomes;
   let roundWinner;
+
+  const btnRock = document.querySelector(".rock");
+  const btnPaper = document.querySelector(".paper");
+  const btnScissors = document.querySelector(".scissors");
+
+  btnRock.addEventListener('click', () => {
+    roundOutcomes = getRoundOutcome('rock', computerPlay());
+    showWinner(roundOutcomes[0], roundOutcomes[1], roundOutcomes[2]);
+  });
+
+  btnPaper.addEventListener('click', () => {
+    roundOutcomes = getRoundOutcome('paper', computerPlay());
+    showWinner(roundOutcomes[0], roundOutcomes[1], roundOutcomes[2]);
+  });
+
+  btnScissors.addEventListener('click', () => {
+    roundOutcomes = getRoundOutcome('scissors', computerPlay());
+    showWinner(roundOutcomes[0], roundOutcomes[1], roundOutcomes[2]);
+  });
+
+
   /*
   for (let i = 0; i <= 4; i++) {
     roundOutcomes = playRound();
@@ -107,12 +128,34 @@ function game() {
   }
 */
 
-  if (playerScore > computerScore){
+/*  if (playerScore > computerScore){
     console.log("Congrats you won the match!");
   } else if (playerScore === computerScore) {
     console.log("This time it's a draw! Maybe next time?");
   } else if (playerScore < computerScore) {
     console.log("Too bad! You lost man...");
+  } else {
+    alert("Unknown error occured!");
+    throw "Unknown error";
+  }
+*/
+}
+
+
+
+
+function showWinner(winner, winningWeapon, losingWeapon){
+  const textBox = document.querySelector(".text-box");
+  console.log(winner);
+  if (winner === "player") {
+    //console.log(`You win! ${capitalize(winningWeapon)} beats ${capitalize(losingWeapon)}`);
+    textBox.textContent = `You win! ${capitalize(winningWeapon)} beats ${capitalize(losingWeapon)}`;
+  } else if (winner === "computer") {
+    //console.log(`You lose! ${capitalize(winningWeapon)} beats ${capitalize(losingWeapon)}`);
+    textBox.textContent = `You lose! ${capitalize(winningWeapon)} beats ${capitalize(losingWeapon)}`;
+  } else if (winner === "tie") {
+    //console.log(`It's a tie! You both chose ${capitalize(winningWeapon)}`);
+    textBox.textContent = `It's a tie! You both chose ${capitalize(winningWeapon)}`;
   } else {
     alert("Unknown error occured!");
     throw "Unknown error";
