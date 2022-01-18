@@ -28,7 +28,7 @@ function getRoundOutcome(playerSelection) {
     if (computerSelection === "scissors") {
       return ["computer", computerSelection, playerSelection];
     } else if (computerSelection === "rock") {
-      return ["player", playerSelection, computerSelection];;
+      return ["player", playerSelection, computerSelection];
     } else {
       alert("Unknown error occured!");
       throw "Unknown error";
@@ -37,7 +37,7 @@ function getRoundOutcome(playerSelection) {
     if (computerSelection === "rock") {
       return ["computer", computerSelection, playerSelection];
     } else if (computerSelection === "paper") {
-      return ["player", playerSelection, computerSelection];;
+      return ["player", playerSelection, computerSelection];
     } else {
       alert("Unknown error occured!");
       throw "Unknown error";
@@ -81,7 +81,7 @@ function game() {
 
   function playRound(weapon) {
     if (playerScore < 5 && computerScore < 5){
-      scoreText.textContent = "Current score is:"
+      scoreText.textContent = "Current score is:";
       roundOutcomes = getRoundOutcome(weapon);
       if (roundOutcomes[0] === "player") playerScore++;
       else if (roundOutcomes[0] === "computer") computerScore++;
@@ -101,7 +101,7 @@ function game() {
       textBoxContent.textContent = "Congrats you won the match!";
       rematchButton.textContent = "Wanna beat me again?";
     } else {
-      textBox.style.backgroundColor = "#FE4A49"
+      textBox.style.backgroundColor = "#FE4A49";
       textBoxContent.textContent = "Too bad! You lost man..";
       rematchButton.textContent = "Wanna get defeated again?";
     }
